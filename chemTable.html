@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChemTable</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    table {
+      padding: 0;
+      word-break: initial;
+    }
+
+    table tr {
+      border: 1px solid #dfe2e5;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+      background-color: #f8f8f8;
+    }
+
+    table th {
+      font-weight: bold;
+      border: 1px solid #dfe2e5;
+      border-bottom: 0;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table td {
+      border: 1px solid #dfe2e5;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table th:first-child,
+    table td:first-child {
+      margin-top: 0;
+    }
+
+    table th:last-child,
+    table td:last-child {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-size: 2.25em;
+      line-height: 1.2;
+      border-bottom: 1px solid #eee;
+    }
+
+    h2 {
+      font-size: 1.75em;
+      line-height: 1.225;
+      border-bottom: 1px solid #eee;
+    }
+
+    .research-links {
+      margin-top: 2rem;
+    }
+
+    .research-item {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .research-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .research-item h3 {
+      color: #3273dc;
+      margin-bottom: 1rem;
+    }
+
+    .research-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .research-item li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .research-item a {
+      color: #3273dc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .research-item a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar-dropdown {
+      padding: 0.5rem 0;
+    }
+
+    .navbar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar-item .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar-divider {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="index.html">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024">
+            <span class="icon">
+              <i class="fas fa-trophy"></i>
+            </span>
+            <span>TableTime: A table-based reasoning framework for time series analysis</span>
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2503.04800">
+            <span class="icon">
+              <i class="fas fa-database"></i>
+            </span>
+            <span>PoTable: A code based table reasoning framework</span>
+          </a>
+          <a class="navbar-item" href="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation">
+            <span class="icon">
+              <i class="fas fa-book"></i>
+            </span>
+            <span>NGTR: A neighbor-guided toolchain reasoner for table recognition</span>
+          </a>
+          <a class="navbar-item" href="https://github.com/0russwest0/Agent-R1">
+            <span class="icon">
+              <i class="fas fa-code-branch"></i>
+            </span>
+            <span>Table Survey: A comprehensive survey on table mining with large language models</span>
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="index.html">
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h2 class="title is-1 publication-title">ChemTable: Benchmarking Multimodal LLMs on Recognition and
+              Understanding over Chemical Table</h2>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Code and Dataset Links (Same Row) -->
+                <div style="display: flex; justify-content: center; gap: 20px;">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <!-- Code Link -->
+                  <span class="link-block">
+                    <a href="https://github.com/lqzxt/ChemTable"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <!-- Dataset Link -->
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/ustc-zyt/ChemTable"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="far fa-images"></i>
+                      </span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('show-papers').addEventListener('click', function () {
+      var paperLinks = document.getElementById('paper-links');
+      if (paperLinks.style.display === 'none') {
+        paperLinks.style.display = 'block';
+      } else {
+        paperLinks.style.display = 'none';
+      }
+    });
+  </script>
+
+
+
+
+
+
+  <!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/platform.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Table Manipulation using TableLLM on our platform
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Chemical tables encode complex experimental knowledge through symbolic expressions, structured variables,
+              and embedded molecular graphics. Existing benchmarks largely overlook this multimodal and domain-specific
+              complexity, limiting the ability of multimodal large language models to support scientific understanding
+              in chemistry. In this work, we introduce ChemTable, a large-scale benchmark of real-world chemical tables
+              curated from the experimental sections of literature. ChemTable includes expert-annotated cell polygons,
+              logical layouts, and domain-specific labels—including reagents, catalysts, yields, and graphical
+              components—and supports two core tasks: (1) Table Recognition, covering structure parsing and content
+              extraction; and (2) Table Understanding, encompassing both descriptive and reasoning-oriented question
+              answering grounded in table structure and domain semantics. We evaluated a range of representative
+              multimodal models, including both open-source and closed-source models, on ChemTable and reported a series
+              of findings with practical and conceptual insights. Although models show reasonable performance on basic
+              layout parsing, they exhibit substantial limitations on both descriptive and inferential QA tasks compared
+              to human performance, and we observe significant performance gaps between open-source and closed-source
+              models across multiple dimensions. These results underscore the challenges of chemistry-aware table
+              understanding and position ChemTable as a rigorous and realistic benchmark for advancing scientific
+              reasoning.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Overview -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h3 class="title is-3">Overview of ChemTable</h3>
+          <div class="publication-video">
+            <img src="static/images/framework1_00.png" />
+          </div>
+        </div>
+      </div>
+      <!--/ Overview -->
+    </div>
+
+
+
+
+
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Empirical Study Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- <h2 class="title is-3">Empirical Study</h2> -->
+
+          <!-- Knowledge Source Selection Subsection -->
+          <div class="content has-text-justified">
+            <!-- <h3 class="title is-4">Coarse-Grained Knowledge Pruning</h3> -->
+            <h4>
+
+              The website is being constructed. We will roll out all the update for this project in the coming days!
+            </h4>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Contact</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you have any questions, we encourage you to either create Github issues 
+            or get in touch with us at <a href="mailto:rag_ustc@icanary.cn">rag_ustc@icanary.cn</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              <b>This webpage is intended for academic purposes, not for commercial promotion.</b>
+            </p>
+            <p>
+              It is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="title is-3">More Research</h2>
+      <div class="content">
+        <div class="research-links">
+          <div class="research-item">
+            <h3 class="title is-4">
+              <i class="fas fa-code-branch"></i>
+              Related Research
+            </h3>
+            <ul>
+              <li>
+                <a href="https://arxiv.org/abs/2412.20662">
+                  Enhancing Table Recognition with Vision LLMs: A Benchmark and Neighbor-Guided Toolchain Reasoner
+                </a>
+                - This paper introduces a hierarchical benchmark and the Neighbor-Guided Toolchain
+                Reasoner (NGTR) framework to enhance table recognition in Vision Large Language Models (VLLMs) by
+                addressing
+                challenges like low-quality inputs through neighbor-based tool selection and iterative refinement.
+              </li>
+            </ul>
+          </div>
+
+          <div class="research-item">
+            <h3 class="title is-4">
+              <i class="fas fa-code-branch"></i>
+              Related Research
+            </h3>
+            <ul>
+              <li>
+                <a href="https://arxiv.org/abs/2412.04272">
+                  PoTable: Towards Systematic Thinking via Stage-oriented Plan-then-Execute Reasoning on Tables
+                </a>
+                - A novel table-based reasoning framework that emulates human analysts by integrating
+                large language models with a Python interpreter to perform systematic, stage-wise analysis of tabular
+                data.
+              </li>
+            </ul>
+          </div>
+
+          <div class="research-item">
+            <h3 class="title is-4">
+              <i class="fas fa-book"></i>
+              Related Surveys
+            </h3>
+            <ul>
+              <li>
+                <a href="https://github.com/USTCAGI/Awesome-LLM-Table-Mining">
+                  A Survey on Table Mining with Large Language Models: Challenges, Advancements and Prospects
+                </a>
+                - Focusing on LLM-driven advancements, this survey offers a comprehensive overview of
+                table mining, analyzing structural and content-related challenges, categorizing current methods,
+                detailing
+                key tasks and applications, and outlining future research directions in structured data understanding.
+              </li>
+            </ul>
+          </div>
+
+          <div class="research-item">
+            <h3 class="title is-4">
+              <i class="fas fa-code-branch"></i>
+              Related Research
+            </h3>
+            <ul>
+              <li>
+                <a href="https://arxiv.org/abs/2411.15737">
+                  TableTime: Reformulating Time Series Classification as Training-Free Table Understanding with Large
+                  Language Models
+                </a>
+                - TableTime is the first framework to reformulate multivariate time series
+                classification as a training-free table understanding task for large language models, enabling zero-shot
+                classification by converting time series into tabular text representations.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
