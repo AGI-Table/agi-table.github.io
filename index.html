@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USTCAGI Research Directory</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <style>
+    .directory-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .directory-item {
+      margin: 1.5rem 0;
+      padding: 2rem;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border-left: 4px solid #3273dc;
+      position: relative;
+    }
+
+    .directory-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .directory-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #363636;
+      font-weight: 600;
+    }
+
+    .category-tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .tag-competition {
+      background-color: #ffeeba;
+      color: #856404;
+    }
+
+    .tag-dataset {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .tag-method {
+      background-color: #cce5ff;
+      color: #004085;
+    }
+
+    .tag-survey {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .tag-framework {
+      background-color: #e2e3e5;
+      color: #383d41;
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+      color: #3273dc;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    .navbar {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem 0;
+      background-color: #f8f9fa;
+    }
+
+    .related-to {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .related-to i {
+      color: #3273dc;
+    }
+
+    .tag-competition-related {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px dashed #ffeeba;
+    }
+
+    .connection-line {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      width: 2rem;
+      height: 2px;
+      background-color: #3273dc;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://github.com/USTCAGI">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+      </a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="directory-container">
+      <h1 class="directory-title">USTCAGI Table Research Projects</h1>
+
+      <div class="directory-item">
+        <span class="category-tag tag-competition">
+          <i class="fas fa-lightbulb"></i> Research
+        </span>
+        <a href="https://arxiv.org/abs/2411.15737" style="color: inherit; text-decoration: none;">
+          <h2 class="title is-4">
+            <i class="fas fa-table project-icon"></i>
+            TableTime: Reformulating Time Series Classification as Training-Free Table Understanding with Large Language
+            Models
+          </h2>
+          <p class="subtitle is-6">TableTime is the first framework to reformulate multivariate time series
+            classification as a training-free table understanding task for large language models, enabling zero-shot
+            classification by converting time series into tabular text representations.</p>
+        </a>
+      </div>
+
+      <div class="directory-item">
+        <span class="category-tag tag-competition">
+          <i class="fas fa-lightbulb"></i> Research
+        </span>
+        <!-- <div class="related-to">
+          <i class="fas fa-link"></i> Derived from KDD Cup '24
+        </div> -->
+        <a href="https://arxiv.org/abs/2412.04272" style="color: inherit; text-decoration: none;">
+          <h2 class="title is-4">
+            <i class="fas fa-filter project-icon"></i>
+            PoTable: Towards Systematic Thinking via Stage-oriented Plan-then-Execute Reasoning on Tables
+          </h2>
+          <p class="subtitle is-6">A novel table-based reasoning framework that emulates human analysts by integrating
+            large language models with a Python interpreter to perform systematic, stage-wise analysis of tabular data.
+          </p>
+        </a>
+      </div>
+      <div class="directory-item">
+        <span class="category-tag tag-competition">
+          <i class="fas fa-lightbulb"></i> Research
+        </span>
+        <a href="https://arxiv.org/abs/2412.20662" style="color: inherit; text-decoration: none;">
+          <h2 class="title is-4">
+            <i class="fas fa-filter project-icon"></i>
+            Enhancing Table Recognition with Vision LLMs: A Benchmark and Neighbor-Guided Toolchain Reasoner
+          </h2>
+          <p class="subtitle is-6">The paper introduces a hierarchical benchmark and the Neighbor-Guided Toolchain
+            Reasoner (NGTR) framework to enhance table recognition in Vision Large Language Models (VLLMs) by addressing
+            challenges like low-quality inputs through neighbor-based tool selection and iterative refinement.</p>
+        </a>
+      </div>
+
+      <div class="directory-item">
+        <span class="category-tag tag-survey">
+          <i class="fas fa-book"></i> Survey
+        </span>
+        <a href="https://github.com/USTCAGI/Awesome-LLM-Table-Mining" style="color: inherit; text-decoration: none;">
+          <h2 class="title is-4">
+            <i class="fas fa-file-alt project-icon"></i>
+            A Survey on Table Mining with Large Language Models: Challenges, Advancements and Prospects
+          </h2>
+          <p class="subtitle is-6">Focusing on LLM-driven advancements, this survey offers a comprehensive overview of
+            table mining, analyzing structural and content-related challenges, categorizing current methods, detailing
+            key tasks and applications, and outlining future research directions in structured data understanding.</p>
+        </a>
+      </div>
+
+
+
+
+      <div class="directory-item">
+        <span class="category-tag tag-dataset">
+          <i class="fas fa-database"></i> Dataset & Benchmark
+        </span>
+        <a href="chemTable.html" style="color: inherit; text-decoration: none;">
+          <h2 class="title is-4">
+            <i class="fas fa-chart-line project-icon"></i>
+            ChemTable: Benchmarking Multimodal LLMs on Recognition and Understanding over Chemical Table
+          </h2>
+          <p class="subtitle is-6">The paper introduces ChemTable, a comprehensive benchmark designed to evaluate
+            multimodal large language models (MLLMs) on the complex tasks of recognizing and understanding chemical
+            tables, aiming to advance scientific table understanding in the chemistry domain</p>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              <b>This webpage is intended for academic purposes, not for commercial promotion.</b>
+            </p>
+            <p>
+              It is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</body>
+
+</html>
